@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>TaskManager</title>
+
+  <!-- BOOTSTRAP -->
+  <link
+    rel="stylesheet"
+    href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+  <!-- FONT -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="style.css">
+
+</head>
+
+<body>
+
+<div class="container py-5">
+
+  <!-- HEADER -->
+  <div class="text-center mb-4">
+
+    <h1 class="fw-bold">
+      TaskManager
+    </h1>
+
+    <p class="text-secondary">
+      Organização moderna em cards
+    </p>
+
+  </div>
+
+  <!-- INPUT AREA -->
+  <div class="card main-card p-4 mb-4">
+
+    <div class="row g-2 align-items-center">
+
+      <!-- TASK -->
+      <div class="col-md-5">
+
+        <input
+          id="taskInput"
+          class="form-control custom-input"
+          placeholder="Nova tarefa">
+
+      </div>
+
+      <!-- PRIORITY -->
+      <div class="col-md-3">
+
+        <select
+          id="prioritySelect"
+          class="form-select custom-input">
+
+          <option value="Alta">
+            Alta
+          </option>
+
+          <option value="Média">
+            Média
+          </option>
+
+          <option value="Baixa">
+            Baixa
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- DATE -->
+      <div class="col-md-3">
+
+        <input
+          type="date"
+          id="deadlineInput"
+          class="form-control custom-input">
+
+      </div>
+
+      <!-- BUTTON -->
+      <div class="col-md-1 d-grid">
+
+        <button
+          class="btn btn-add-icon"
+          onclick="addTask()">
+
+          +
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="main-card p-3 mb-4">
+
+    <div class="d-flex justify-content-between small mb-2">
+
+      <span>
+        Total:
+        <strong id="totalTasks">
+          0
+        </strong>
+      </span>
+
+      <span>
+        Concluídas:
+        <strong id="doneTasks">
+          0
+        </strong>
+      </span>
+
+    </div>
+
+    <div class="progress custom-progress">
+
+      <div
+        class="progress-bar progress-custom"
+        id="progressBar">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TASK GRID -->
+  <div
+    id="taskList"
+    class="task-grid">
+
+  </div>
+
+</div>
+
+<!-- =========================
+EDIT MODAL
+========================= -->
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content bg-dark text-white border-secondary">
+
+      <!-- HEADER -->
+      <div class="modal-header border-secondary">
+
+        <h5 class="modal-title">
+          Editar tarefa
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal">
+
+        </button>
+
+      </div>
+
+      <!-- BODY -->
+      <div class="modal-body">
+
+        <input
+          type="hidden"
+          id="editTaskId">
+
+        <!-- TEXT -->
+        <div class="mb-3">
+
+          <label class="form-label">
+            Tarefa
+          </label>
+
+          <input
+            type="text"
+            id="editTaskText"
+            class="form-control custom-input">
+
+        </div>
+
+        <!-- PRIORITY -->
+        <div class="mb-3">
+
+          <label class="form-label">
+            Prioridade
+          </label>
+
+          <select
+            id="editTaskPriority"
+            class="form-select custom-input">
+
+            <option value="Alta">
+              Alta
+            </option>
+
+            <option value="Média">
+              Média
+            </option>
+
+            <option value="Baixa">
+              Baixa
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- DEADLINE -->
+        <div class="mb-3">
+
+          <label class="form-label">
+            Prazo
+          </label>
+
+          <input
+            type="date"
+            id="editTaskDeadline"
+            class="form-control custom-input">
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="modal-footer border-secondary">
+
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal">
+
+          Cancelar
+
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="saveEditTask()">
+
+          Salvar
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- BOOTSTRAP JS -->
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>

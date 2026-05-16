@@ -1,0 +1,160 @@
+/* =========================
+   BASE
+========================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  color: white;
+}
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.main-card {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(23, 23, 23, 0.4);
+}
+
+/* =========================
+   INPUTS DARK
+========================= */
+.custom-input {
+  background: #121212 !important;
+  border: 1px solid #2f2f2f !important;
+  color: white !important;
+  height: 46px;
+}
+
+.custom-input:focus {
+  background: #1a1a1a !important;
+  border-color: #4a90e2 !important;
+  box-shadow: none !important;
+  color: white !important;
+}
+
+.custom-input::placeholder {
+  color: #777;
+}
+
+/* =========================
+   BOTÃO "+"
+========================= */
+.btn-add-icon {
+  height: 46px;
+  width: 46px;
+  border-radius: 12px;
+  border: none;
+
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+
+  background: linear-gradient(135deg, #002967, #007190);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: .2s;
+}
+
+.btn-add-icon:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* =========================
+   GRID DE CARDS (3 POR LINHA)
+========================= */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 992px) {
+  .task-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .task-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   CARD
+========================= */
+.task-item {
+  background: #1e1e1e;
+  border: 1px solid #2e2e2e;
+  border-radius: 16px;
+  padding: 16px;
+  transition: .2s;
+}
+
+.task-item:hover {
+  transform: translateY(-4px);
+  background: #252525;
+}
+
+/* =========================
+   TEXTO
+========================= */
+.task-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.task-date {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.task-status {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   COMPLETADO
+========================= */
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* =========================
+   PRIORIDADE
+========================= */
+.badge {
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.badge-alta { background: #dc3545; }
+.badge-media { background: #ffc107; color: black; }
+.badge-baixa { background: #198754; }
+
+/* =========================
+   PROGRESS BAR
+========================= */
+.custom-progress {
+  background: #484848;
+  height: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-custom {
+  width: 0%;
+  background: linear-gradient(90deg, #002967, #007190);
+  transition: width .3s ease;
+}
