@@ -3,7 +3,7 @@ window.onload = loadTasks;
 // ==========================
 // API URL
 // ==========================
-const API_URL = "http://127.0.0.1:5000/tasks";
+const API_URL = "http://192.168.0.17:5000/api";
 
 // ==========================
 // ADD TASK
