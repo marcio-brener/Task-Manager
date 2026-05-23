@@ -11,17 +11,14 @@
 
   <title>TaskManager</title>
 
-  <!-- BOOTSTRAP -->
   <link
     rel="stylesheet"
-    href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
 
-  <!-- FONT -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
     rel="stylesheet">
 
-  <!-- CSS -->
   <link
     rel="stylesheet"
     href="style.css">
@@ -32,7 +29,6 @@
 
 <div class="container py-5">
 
-  <!-- HEADER -->
   <div class="text-center mb-4">
 
     <h1 class="fw-bold">
@@ -45,12 +41,10 @@
 
   </div>
 
-  <!-- INPUT AREA -->
   <div class="card main-card p-4 mb-4">
 
     <div class="row g-2 align-items-center">
 
-      <!-- TASK -->
       <div class="col-md-5">
 
         <input
@@ -60,7 +54,6 @@
 
       </div>
 
-      <!-- PRIORITY -->
       <div class="col-md-3">
 
         <select
@@ -83,7 +76,6 @@
 
       </div>
 
-      <!-- DATE -->
       <div class="col-md-3">
 
         <input
@@ -93,7 +85,6 @@
 
       </div>
 
-      <!-- BUTTON -->
       <div class="col-md-1 d-grid">
 
         <button
@@ -110,7 +101,6 @@
 
   </div>
 
-  <!-- PROGRESS -->
   <div class="main-card p-3 mb-4">
 
     <div class="d-flex justify-content-between small mb-2">
@@ -143,7 +133,6 @@
 
   </div>
 
-  <!-- TASK GRID -->
   <div
     id="taskList"
     class="task-grid">
@@ -152,9 +141,6 @@
 
 </div>
 
-<!-- =========================
-EDIT MODAL
-========================= -->
 <div
   class="modal fade"
   id="editModal"
@@ -164,7 +150,6 @@ EDIT MODAL
 
     <div class="modal-content bg-dark text-white border-secondary">
 
-      <!-- HEADER -->
       <div class="modal-header border-secondary">
 
         <h5 class="modal-title">
@@ -180,14 +165,12 @@ EDIT MODAL
 
       </div>
 
-      <!-- BODY -->
       <div class="modal-body">
 
         <input
           type="hidden"
           id="editTaskId">
 
-        <!-- TEXT -->
         <div class="mb-3">
 
           <label class="form-label">
@@ -201,7 +184,6 @@ EDIT MODAL
 
         </div>
 
-        <!-- PRIORITY -->
         <div class="mb-3">
 
           <label class="form-label">
@@ -228,7 +210,6 @@ EDIT MODAL
 
         </div>
 
-        <!-- DEADLINE -->
         <div class="mb-3">
 
           <label class="form-label">
@@ -244,7 +225,6 @@ EDIT MODAL
 
       </div>
 
-      <!-- FOOTER -->
       <div class="modal-footer border-secondary">
 
         <button
@@ -273,10 +253,8 @@ EDIT MODAL
 
 </div>
 
-<!-- BOOTSTRAP JS -->
-<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- SCRIPT -->
 <script src="script.js"></script>
 
 </body>

@@ -27,7 +27,7 @@ services:
     container_name: task_frontend
     restart: always
     ports:
-      - "8080:80" # Você vai acessar seu site por aqui
+      - "3000:80" # Você vai acessar seu site por aqui
 
 volumes:
   mongo_data:
