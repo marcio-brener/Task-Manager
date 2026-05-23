@@ -20,9 +20,17 @@ CORS(app)
 # ==========================
 # MONGO CONNECTION
 # ==========================
-MONGO_URI = os.getenv("MONGO_URI")
+# Pega a URI do arquivo .env. Se não existir, usa o padrão do Docker Compose
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongodb:27017/")
 
-client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
+# Lógica inteligente para conexão:
+# Se for MongoDB Atlas (nuvem), usa o certifi. Se for Docker (local), conecta direto.
+if "+srv" in MONGO_URI:
+    client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
+    print("Conectado ao MongoDB Atlas (Nuvem) ☁️")
+else:
+    client = MongoClient(MONGO_URI)
+    print("Conectado ao MongoDB Local (Docker) 🐳")
 
 db = client.taskmanager
 tasks_collection = db.tasks
@@ -32,11 +40,8 @@ tasks_collection = db.tasks
 # ==========================
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
-
     tasks = []
-
     for task in tasks_collection.find():
-
         tasks.append({
             "_id": str(task["_id"]),
             "text": task.get("text", ""),
@@ -44,7 +49,6 @@ def get_tasks():
             "deadline": task.get("deadline", ""),
             "done": task.get("done", False)
         })
-
     return jsonify(tasks)
 
 # ==========================
@@ -52,20 +56,17 @@ def get_tasks():
 # ==========================
 @app.route("/tasks", methods=["POST"])
 def create_task():
-
     data = request.json
-
     task = {
         "text": data.get("text"),
         "priority": data.get("priority"),
         "deadline": data.get("deadline"),
         "done": False
     }
-
+    
     result = tasks_collection.insert_one(task)
-
     task["_id"] = str(result.inserted_id)
-
+    
     return jsonify(task), 201
 
 # ==========================
@@ -73,23 +74,19 @@ def create_task():
 # ==========================
 @app.route("/tasks/<id>", methods=["PUT"])
 def update_task(id):
-
     data = request.json
-
     update_task = {
         "text": data.get("text"),
         "priority": data.get("priority"),
         "deadline": data.get("deadline"),
         "done": data.get("done", False)
     }
-
+    
     tasks_collection.update_one(
         {"_id": ObjectId(id)},
-        {
-            "$set": update_task
-        }
+        {"$set": update_task}
     )
-
+    
     return jsonify({
         "message": "Task atualizada com sucesso"
     })
@@ -99,11 +96,7 @@ def update_task(id):
 # ==========================
 @app.route("/tasks/<id>", methods=["DELETE"])
 def delete_task(id):
-
-    tasks_collection.delete_one({
-        "_id": ObjectId(id)
-    })
-
+    tasks_collection.delete_one({"_id": ObjectId(id)})
     return jsonify({
         "message": "Task removida com sucesso"
     })
@@ -113,7 +106,6 @@ def delete_task(id):
 # ==========================
 @app.route("/")
 def home():
-
     return jsonify({
         "message": "API TaskManager funcionando 🚀"
     })
@@ -122,7 +114,7 @@ def home():
 # RUN
 # ==========================
 if __name__ == "__main__":
-
+    # Mantive o debug=True, mas em produção real idealmente seria False
     app.run(
         debug=True,
         host="0.0.0.0",

@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # 1. O Banco de Dados MongoDB
+  mongodb:
+    image: mongo:latest
+    container_name: task_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db # Garante que suas tarefas não sumam ao desligar o Docker
+
+  # 2. O Back-end em Flask
+  backend:
+    build: ./backend
+    container_name: task_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb # Só liga o Flask DEPOIS que o MongoDB estiver pronto
+
+  # 3. O Front-end com Bootstrap
+  frontend:
+    build: ./frontend
+    container_name: task_frontend
+    restart: always
+    ports:
+      - "8080:80" # Você vai acessar seu site por aqui
+
+volumes:
+  mongo_data:
