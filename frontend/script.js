@@ -3,7 +3,7 @@ window.onload = loadTasks;
 // ==========================
 // API URL (Apontando diretamente para a rota correta do back-end)
 // ==========================
-const API_URL = `http://mongodb:5000/tasks`;
+const API_URL = `http://backend:5000/tasks`;
 // ==========================
 // ADD TASK
 // ==========================
