@@ -3,8 +3,8 @@ window.onload = loadTasks;
 // ==========================
 // API URL (Apontando diretamente para a rota correta do back-end)
 // ==========================
-const API_URL = `http://backend:5000/tasks`;
-// ==========================
+const hostname = window.location.hostname;
+const API_URL = `http://${hostname}:5000`;// ==========================
 // ADD TASK
 // ==========================
 async function addTask() {
