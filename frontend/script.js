@@ -3,7 +3,7 @@ window.onload = loadTasks;
 // ==========================
 // API URL (Apontando diretamente para a rota correta do back-end)
 // ==========================
-const API_URL = `http://${window.location.hostname}:5000/tasks`;
+const API_URL = `http://localhost:5000/tasks`;
 // ==========================
 // ADD TASK
 // ==========================
@@ -24,7 +24,7 @@ async function addTask() {
   };
 
   try {
-    // CORRIGIDO: Agora bate em http://192.168.0.17:5000/api/tasks
+
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
@@ -53,7 +53,6 @@ async function addTask() {
 // ==========================
 async function loadTasks() {
   try {
-    // CORRIGIDO: Agora busca de http://192.168.0.17:5000/api/tasks
     const response = await fetch(API_URL);
     const tasks = await response.json();
 
@@ -168,7 +167,6 @@ async function saveEditTask() {
   const deadline = document.getElementById("editTaskDeadline").value;
 
   try {
-    // CORRIGIDO: Agora bate em http://192.168.0.17:5000/api/tasks/<id>
     await fetch(`${API_URL}/${id}`, {
       method: "PUT",
       headers: {
@@ -197,7 +195,6 @@ async function removeTask(card) {
   const id = card.dataset.id;
 
   try {
-    // CORRIGIDO: Agora bate em http://192.168.0.17:5000/api/tasks/<id>
     await fetch(`${API_URL}/${id}`, {
       method: "DELETE"
     });
@@ -217,7 +214,6 @@ async function toggleTask(card, done) {
   const id = card.dataset.id;
 
   try {
-    // CORRIGIDO: Agora bate em http://192.168.0.17:5000/api/tasks/<id>
     await fetch(`${API_URL}/${id}`, {
       method: "PUT",
       headers: {
