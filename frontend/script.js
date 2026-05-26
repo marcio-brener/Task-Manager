@@ -3,7 +3,7 @@ window.onload = loadTasks;
 // ==========================
 // API URL (Apontando diretamente para a rota correta do back-end)
 // ==========================
-const API_URL = `http://localhost:5000/tasks`;
+const API_URL = `http://10.55.240.159:5000/tasks`;
 // ==========================
 // ADD TASK
 // ==========================
